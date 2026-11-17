@@ -1,0 +1,164 @@
+{
+  "project_info": {
+    "project_number": "542906319053",
+    "project_id": "deliveryapp-42127",
+    "storage_bucket": "deliveryapp-42127.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542906319053:android:2312dba0e165d9cb442984",
+        "android_client_info": {
+          "package_name": "com.example.delivery_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542906319053-i7gkn6fhr47fes3tdeg8v8fkvoh0jf0v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.delivery_app",
+            "certificate_hash": "a6b3b208a6ca64b64778b3512356f3032e06f905"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc-wr1uucUQZQr32KYgxonqihs-8-qGgI"
+        },
+        {
+          "current_key": "AIzaSyD_-yyKJNqAVGj6lpQ8iYizrqHb4Nqvl-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542906319053-q94l0ndtjojn0rh9dahu1db5tp5emkri.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "542906319053-0pkhriatt7gbrb1a19n16k22k8qi7bq9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.taquerialety.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542906319053:android:f2c94781f74c0eeb442984",
+        "android_client_info": {
+          "package_name": "com.taquerialety.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542906319053-e8tio73m52ceieatkjuvg08banji78rm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taquerialety.app",
+            "certificate_hash": "a09ab9be806c8e3193a4b12de8cd986c253a750b"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc-wr1uucUQZQr32KYgxonqihs-8-qGgI"
+        },
+        {
+          "current_key": "AIzaSyD_-yyKJNqAVGj6lpQ8iYizrqHb4Nqvl-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542906319053-q94l0ndtjojn0rh9dahu1db5tp5emkri.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "542906319053-0pkhriatt7gbrb1a19n16k22k8qi7bq9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.taquerialety.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542906319053:android:9ea2735b6f393861442984",
+        "android_client_info": {
+          "package_name": "com.taquerialety.gestion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc-wr1uucUQZQr32KYgxonqihs-8-qGgI"
+        },
+        {
+          "current_key": "AIzaSyD_-yyKJNqAVGj6lpQ8iYizrqHb4Nqvl-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542906319053-q94l0ndtjojn0rh9dahu1db5tp5emkri.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "542906319053-0pkhriatt7gbrb1a19n16k22k8qi7bq9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.taquerialety.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542906319053:android:35d0c3efcb40ad59442984",
+        "android_client_info": {
+          "package_name": "com.taquerialety.gestion.gestion_taqueria_lety"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc-wr1uucUQZQr32KYgxonqihs-8-qGgI"
+        },
+        {
+          "current_key": "AIzaSyD_-yyKJNqAVGj6lpQ8iYizrqHb4Nqvl-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542906319053-q94l0ndtjojn0rh9dahu1db5tp5emkri.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "542906319053-0pkhriatt7gbrb1a19n16k22k8qi7bq9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.taquerialety.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
