@@ -15,7 +15,7 @@ class DetailsPanelPedido extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    final (_, tipo) = pedidoSeleccionado.infoTipoPedido;
+    final (icono, tipo) = pedidoSeleccionado.infoTipoPedido;
 
     final (etiqueta, siguienteEstado) = pedidoSeleccionado.infoSiguienteEstado;
 
@@ -33,7 +33,11 @@ class DetailsPanelPedido extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Chip(label: Text(tipo), visualDensity: VisualDensity.compact),
+              Chip(
+                avatar: Icon(icono, size: 18),
+                label: Text(tipo),
+                visualDensity: VisualDensity.compact,
+              ),
             ],
           ),
           const SizedBox(height: 4),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_taqueria_lety/models/pedido.dart';
 import 'package:gestion_taqueria_lety/services/order_service.dart';
-import 'package:gestion_taqueria_lety/widgets/app_notifier.dart';
+import 'package:gestion_taqueria_lety/utils/action_helper.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard({super.key, required this.pedido});
@@ -11,6 +11,7 @@ class OrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (etiqueta, siguienteEstado) = pedido.infoSiguienteEstado;
+    final orderService = OrderService();
 
     return Card(
       margin: const EdgeInsetsDirectional.symmetric(
@@ -29,31 +30,18 @@ class OrderCard extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: () async {
-                    final orderService = OrderService();
-
-                    try {
-                      await orderService.cambiarEstadoPedido(
-                        orderId: pedido.id,
-                        nuevoEstado: siguienteEstado,
-                      );
-                      if (context.mounted) {
-                        AppNotifier.show(
-                          context,
-                          message:
-                              'Estado del pedido cambiado a "$siguienteEstado"',
-                          type: 'success',
+                    await ActionHelper.runWithFeedback(
+                      context,
+                      action: () async {
+                        await orderService.cambiarEstadoPedido(
+                          orderId: pedido.id,
+                          nuevoEstado: siguienteEstado,
                         );
-                      }
-                    } catch (e) {
-                      debugPrint('Error al cambiar el estado del pedido: $e');
-                      if (context.mounted) {
-                        AppNotifier.show(
-                          context,
-                          message: 'Error al cambiar el estado del pedido',
-                          type: 'error',
-                        );
-                      }
-                    }
+                      },
+                      successMessage:
+                          'Estado cambiado con éxito a $siguienteEstado',
+                      errorMessage: 'Ocurrió un error al intentar cambiar de estado al pedido.',
+                    );
                   },
                   child: Text(etiqueta),
                 ),

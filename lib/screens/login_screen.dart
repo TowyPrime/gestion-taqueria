@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_taqueria_lety/utils/how_notification.dart';
 
 final _emailRegExp = RegExp(
   r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
@@ -40,13 +41,16 @@ class _LoginScreenState extends State<LoginScreen> {
       final trimmedEmail = _emailController.text.trim();
       final password = _passwordController.text;
 
-      final credential = await _auth.signInWithEmailAndPassword(
+      await _auth.signInWithEmailAndPassword(
         email: trimmedEmail,
         password: password,
       );
-      final user = credential.user;
-      if (user != null) {
-        debugPrint('Inicio de sesión exitoso. UID: ${user.uid}');
+      if (mounted) {
+        showNotification(
+          context,
+          message: 'Inicio de sesión exitoso',
+          type: NotificationType.success,
+        );
       }
     } on FirebaseAuthException catch (e) {
       String messageError;
@@ -71,9 +75,22 @@ class _LoginScreenState extends State<LoginScreen> {
           messageError = 'Error de autenticación: ${e.code}';
       }
 
-      _mostrarSnackBarError(messageError);
+      if (mounted) {
+        showNotification(
+          context,
+          message: messageError,
+          type: NotificationType.error,
+        );
+      }
     } catch (e) {
-      _mostrarSnackBarError('Ocurrió un error inesperado');
+      if (mounted) {
+        showNotification(
+          context,
+          message: 'Ocurrió un error inesperado',
+          type: NotificationType.error,
+        );
+      }
+
       debugPrint('Error: $e');
     } finally {
       if (mounted) {
@@ -81,14 +98,6 @@ class _LoginScreenState extends State<LoginScreen> {
           _cargando = false;
         });
       }
-    }
-  }
-
-  void _mostrarSnackBarError(String mensaje) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(mensaje), backgroundColor: Colors.red),
-      );
     }
   }
 

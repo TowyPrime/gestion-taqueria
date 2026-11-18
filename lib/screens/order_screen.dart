@@ -2,13 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_taqueria_lety/models/pedido.dart';
 import 'package:gestion_taqueria_lety/services/order_service.dart';
+import 'package:gestion_taqueria_lety/utils/action_helper.dart';
+import 'package:gestion_taqueria_lety/utils/constants.dart';
 import 'package:gestion_taqueria_lety/widgets/error_screen.dart';
 import 'package:gestion_taqueria_lety/widgets/list_panel_pedidos.dart';
 import 'package:gestion_taqueria_lety/widgets/order_card.dart';
 import 'package:gestion_taqueria_lety/widgets/details_panel_pedido.dart';
-
-const double kTabletBreakpoint = 840.0;
-const double widthList = 340.0;
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -51,7 +50,7 @@ class _OrderScreenState extends State<OrderScreen> {
 
         return LayoutBuilder(
           builder: (context, constraints) {
-            if (constraints.maxWidth >= kTabletBreakpoint) {
+            if (constraints.maxWidth >= widthDesign) {
               final effectiveSelectedId =
                   selectedOrderId != null &&
                       pedidos.any((p) => p.id == selectedOrderId)
@@ -79,31 +78,18 @@ class _OrderScreenState extends State<OrderScreen> {
                     child: DetailsPanelPedido(
                       pedidoSeleccionado: pedidoSeleccionado,
                       onStatusChanged: (nuevoEstado) async {
-                        try {
-                          await _orderService.cambiarEstadoPedido(
-                            orderId: pedidoSeleccionado.id,
-                            nuevoEstado: nuevoEstado,
-                          );
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'El pedido pasó a estado: $nuevoEstado',
-                                ),
-                                backgroundColor: Colors.green,
-                              ),
+                        await ActionHelper.runWithFeedback(
+                          context,
+                          action: () async {
+                            await _orderService.cambiarEstadoPedido(
+                              orderId: pedidoSeleccionado.id,
+                              nuevoEstado: nuevoEstado,
                             );
-                          }
-                        } catch (e) {
-                          if (context.mounted) {
-                            debugPrint('Error:$e');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Error al cambiar estado'),
-                              ),
-                            );
-                          }
-                        }
+                          },
+                          successMessage:
+                              'Estado cambiado con éxito a: $nuevoEstado',
+                          errorMessage: 'Error al intentar cambiar estado',
+                        );
                       },
                     ),
                   ),
